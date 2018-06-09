@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* #container{
+            position: relative;
+            width: 2000px;
+            height: 2000px;
+            background: rgb(151, 151, 179)
+        }
+        .point,.point-move{
+            width: 20px;
+            height: 20px;
+        }
+        .point{
+            position: relative;
+            background: yellow
+        }
+        .point-move{
+            position: relative;
+            background: yellowgreen;
+            z-index: 1000;
+        }
+        button#move{
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            left: 300px;
+        }
+        button#move2{
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            left: 400px;
+            
+        } */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body,html{
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.13);
+        }
+        
+        /* #A{
+            background: red;
+            width: 100%;
+            height: 30px;
+        }
+        #B{
+            float: left;
+            background: rgb(38, 0, 255);
+            width: 150px;
+            height: calc(100% - 40px);
+        }
+        #C{
+            float: left;
+            background: rgb(0, 255, 34);
+            width: calc(100% - 150px);
+            height: calc(100% - 40px);
+            
+        }
+        #D{
+            float: left;
+            width: 100%;
+            height: 10px;
+            background: rgb(0, 225, 255);
+        } */
+        /* 经典布局善用padding和border-box */
+        /* #wrapper{
+            position: absolute;
+            box-sizing: border-box;
+            padding-top: 30px;
+            padding-left: 150px;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(150, 148, 148);
+        }
+        #A{
+            position: absolute;
+            top:0;
+            left: 0;
+            background: red;
+            width: 100%;
+            height: 30px;
+            z-index: 1;
+        }
+        #B{
+            position: absolute;
+            top:0;
+            left: 0;
+            box-sizing: border-box;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            background: rgb(38, 0, 255);
+            width: 150px;
+            height: 100%;
+        }
+        #C{
+            position: absolute;
+            top:0;
+            box-sizing: border-box;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            background: rgb(0, 255, 34);
+            width: 100%;
+            height: 100%;
+        }
+        #D{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 30px;
+            background: rgb(0, 225, 255);
+        } */
+        /* #z{
+            width: 50px;
+            height: 50px;
+            background: rgb(0, 204, 255);
+            animation: zmove 2s linear infinite;
+        }
+        @keyframes zmove{
+            0%{}
+            30%{transform: translate(200PX)}
+            60%{transform: translate(0, 200PX)}
+            100%{transform: translate(200PX, 200PX)}
+        } */
+    </style>
+</head>
+<body>
+    <!-- <div id='z'></div> -->
+    <!-- <div id="container">
+        
+        <button id='move' onclick="move()">move()</button>
+        <button id='move2' onclick="move2()">move2()</button>
+        <div class="point-move"></div>
+    </div> -->
+    <!-- <div id='wrapper'>经典布局
+        <div id="A">A</div>
+        <div id="B">B</div>
+        <div id="C">C</div>
+        <div id="D">D</div>
+    </div> -->
+    
+    <script src="./js/jquery-1.12.4.js"></script>
+    <script>
+        // //1+2+3+4.。100累加
+        // var j = 0
+        // for (var i = 0; i < 101; i++) {
+        //   j+=i 
+        // }
+        // //日期。。。
+        // var date = new Date()
+        // var year = date.getFullYear()
+        // var month = date.getMonth()+1
+        // var day = date.getDate()
+        // var dateStr = year +'-'+ month+'-' + day
+        // console.log(dateStr)
+        // var arr = []//[100,99,...0]
+        // for (var i = 0; i < 101; i++) {
+        //     arr.unshift(i)   
+        // }
+        // console.log(arr)
+
+        // 正则var reg = new RegExp()
+        // var reg = /^[A-z][A-z0-9_]{3,8}\s$/
+        // var str = 'a_2abc '
+        // console.log(reg.test(str))
+
+        //事件绑定的封装
+        // function eventUtil(eventDom, eventStr, fun){
+        //     eventDom.addEventListener && eventDom.addEventListener(eventStr, fun, false)
+        //     eventDom.attachEvent && eventDom.attachEvent('on'+eventStr, fun)
+        //  }
+
+        //arguments
+        // function yest(a,b,c) {
+        //     c=4
+        //     console.log(arguments[2])
+        // }
+        // yest(1,2,3)
+
+        // function yest(a,b,c) {
+        //     arguments[2]=4
+        //     console.log(c)
+        // }
+        // yest(1,2,3)
+
+        //50div运动函数
+        // var container = document.getElementById('container')
+        // for (var i = 0; i < 50; i++) {
+        //     var divs = document.createElement('div')
+        //     divs.className = 'point'
+        //     divs.innerHTML = i+1
+        //     container.appendChild(divs)
+        // }
+        // function move() {
+        //     var divs = document.querySelectorAll('.point')
+        //     for (var i = 0; i < divs.length; i++) {
+        //         // divs[i].style.position = 'absolute'
+        //         // divs[i].style.top = 40*i+'px'
+        //         divs[i].style.transition = '1s'
+        //         divs[i].style.transform = 'translateY('+20*i+'px)'
+        //     }
+        // }
+        // function move2() {
+        //     var i=0
+        //     var divP = document.querySelector('.point-move')
+        //     divP.style.transform = 'translateY(20px)'
+        //     divP.style.transition = '1s'
+        //     //console.log(divP)
+        //     var timer = setInterval(() => {
+        //         i++
+        //         divP.style.transform = 'translateY('+(20+40*i)+'px)'
+        //         console.log(i)
+        //         if(i>=49){
+        //             console.log('ting')
+        //             clearInterval(timer)
+        //         }
+        //     }, 1500);
+        // }
+
+        //实现reverse()
+        // var numArr = [4,7,9,5,6,8]
+        // function rever(arr) {
+        //     var lengs = arr.length-1
+        //     var len = Math.floor(lengs/2)
+		// 	for (var i = 0; i < len; i++) {
+		// 		t = arr[i]
+		// 		arr[i] = arr[lengs-i]
+		// 		arr[lengs-i]= t
+        //     }
+        // }
+		// rever(numArr)	
+        // console.log(numArr)
+        //定义成数组自身的方法
+        // var numArr = [4,7,9,5,6,8]
+        // Array.prototype.rever = function () {
+        //     var lengs = this.length-1
+        //     var len = Math.floor(lengs/2)
+		// 	for (var i = 0; i < len; i++) {
+		// 		t = this[i]
+		// 		this[i] = this[lengs-i]
+		// 		this[lengs-i]= t
+        //     }
+        // }
+        // numArr.rever()
+        // console.log(numArr)
+
+        //解析字符串
+        // var url = 'http://www.baidu.com?admin=haohai&password=123456&id=88'//参数解析为对象
+        // var urlObj = {}
+        // var newStrArr = url.split('?')[1].split('&')
+        // newStrArr.forEach(function (item) {
+        //     var strArr = item.split('=')
+        //     //console.log(strArr)
+        //     var a = strArr[0]
+        //     var b = strArr[1]
+        //     urlObj[a] = b
+        // })
+        // console.log(urlObj)
+
+        // var str = 'give_your_love'//解析为'GiveYouLove'
+        // var strArr = str.split('_')
+        // //console.log(strArr)
+        // var newStr = ''
+        // strArr.forEach(function (item) {
+        //     item = item.slice(0,1).toLocaleUpperCase()+item.slice(1)
+        //     console.log(item);
+        //     newStr+=item
+        // })
+        // console.log(newStr)
+
+        // var str ='http://www.baidu.com?admin=haohai&password=123456&id=88'//找出出现最多的字符
+        // var obj = {}
+        // for (var i = 0; i < str.length; i++) {
+        //     var char = str.charAt(i) //str[i]
+        //     if(obj[char]){
+        //         obj[char]++
+        //     }else{
+        //         obj[char] = 1
+        //     }
+        // }
+        // var maxNum =0;//最大的次数
+        // var maxitem//最大的字符
+        // for(var key in obj){
+        //     if(maxNum<obj[key]){
+        //         maxNum=obj[key]
+        //         maxitem = key
+        //     }
+        // }
+        // console.log(maxitem,maxNum)
+
+        
+    </script>
+</body>
+</html>

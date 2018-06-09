@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name='viewport' content="width=device-width,initial-scale=1.0,user-scale=no">
+		<link rel="stylesheet" type="text/css" href="" />
+		lin
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		/*.test{
+			display: inline-block;
+			margin: 3px 0;
+		}*/
+		body{
+			background-color: #001111;
+		}
+		ul{
+			width: 500px;
+			height: 500px;
+			margin: 100px auto;
+			background-color: aquamarine;
+			position: relative;
+			transform: rotate(0deg);
+			border-radius: 50%;
+		}
+		p{
+			position: absolute;
+			transform-origin: 4px 230px;
+			left: 246px;
+			top: 20px;
+		}
+		li{
+			width: 4px;
+			height: 10px;
+			background-color: black;
+			list-style: none;
+			position: absolute;
+			transform-origin: 2px 250px;
+			left: 248px;
+		}
+		li:nth-of-type(5n+1){
+			height: 20px;
+		}
+		#seconds{
+			background-color: red;
+			width: 2px;
+			height: 200px;
+		}
+		#hours{
+			background-color: black;
+			width: 2px;
+			height: 100px;
+		}
+		#mins{
+			background-color: darkblue;
+			width: 2px;
+			height: 150px;
+		}
+		.item{
+			position: absolute;
+			left: 249px;
+			top: 249px;
+			transition: 1s linear;
+			transform-origin: 1px 0px;
+			
+		}
+	</style>
+	<body>
+		<!--<button class="btn">0</button>
+		<button class="btn">1</button>
+		<button class="btn">2</button>
+		<button class="btn">3</button>
+		<button class="btn">4</button>-->
+		
+			
+	</body>
+	<script type="text/javascript">
+	
+		//数组去重..............
+		/*var a = [1,1,1,2,5,3,5,3,2,2,8,9]
+		
+		function fun(a){
+			var b = [];
+			//console.log(b);
+			for(var i=0; i<a.length; i++){
+				if(b.indexOf(a[i])==-1){
+					b.push(a[i]);
+				}
+			}
+			//console.log(b)
+			return b
+		}
+		var b = fun(a)
+		console.log(b)*/
+		//数组去重(定义为数组自身的方法)..............
+		// var a = [1,1,1,2,5,3,5,3,2,2,8,9]
+		// Array.prototype.fun = function () {
+		// 	var b = [];
+		// 	//console.log(b);
+		// 	for(var i=0; i<this.length; i++){
+		// 		if(b.indexOf(this[i])==-1){
+		// 			b.push(this[i]);
+		// 		}
+		// 	}
+		// 	//console.log(b)
+		// 	return b
+		// }
+		// var newArr = a.fun()
+		// console.log(newArr)
+		
+		//数组排序............	
+		// var arr= [2,5,4,8,9,1];
+		// var t;
+		// function foo(){
+		// 	for(var i=0;i<arr.length;i++){
+		// 		for(var j=i+1;j<arr.length;j++){
+		// 			if(arr[i]>arr[j]){
+		// 				t=arr[i]
+		// 				arr[i]=arr[j]//将时的i对应的互换
+		// 				arr[j]=t
+						
+		// 			}
+		// 		}
+		// 	}
+		// }
+		// foo()
+		// console.log('arr=',arr)
+		//数组排序（定义为数组自身的方法）............	
+		// var arr= [2,5,4,8,9,1];
+		// var t;
+		// Array.prototype.foo = function () {
+		// 	var b;
+		// 	for(var i=0;i<this.length;i++){
+		// 		for(var j=i+1;j<this.length;j++){
+		// 			if(this[i]>this[j]){
+		// 				t=this[i]
+		// 				this[i]=this[j]//将时的i对应的互换
+		// 				this[j]=t	
+		// 			}
+		// 		}
+		// 	}
+		// }
+		// arr.foo()
+		// console.log(arr)
+			
+		//乘法表..............
+		/*var z
+		for(var i=1;i<10;i++){
+			for(var j=1;j<i+1;j++){
+				z = i*j>9?i*j:'&nbsp;&nbsp;'+i*j
+				document.write('<span class="test">'+i+'x'+j+'='+z+'&nbsp;&nbsp;&nbsp;</span>')
+			}
+			document.write('<br/>')
+		}*/
+		
+		/*var text = '我是一个span标签';
+		var strNode = '<span id="test2">'+text+'</span>'
+		//var strNode = `<span id="test2">${text}</span>`
+		document.write(strNode)
+		console.log(typeof strNode)*/
+		//闭包示范..........
+		//var btns = document.getElementsByClassName('btn')
+		//console.log(btns)
+		/*for(var i=0;i<btns.length;i++){
+			(function(i){
+				btns[i].onclick = function(){
+					alert(i)
+				}	
+			})(i)
+		}*/
+		
+		//时间表
+		// var body = document.getElementsByTagName('body')[0]
+		// var ul = document.createElement('ul')
+		// for(var j=0;j<12;j++){
+		// 	var p = document.createElement('p')
+		// 	p.innerHTML = j
+		// 	p.style.transform = 'rotate('+30*j+'deg)'
+		// 	ul.appendChild(p)
+		// }
+		// for(var i=0;i<60;i++){
+		// 	var lis = document.createElement('li')
+		// 	lis.style.transform = 'rotate('+6*i+'deg)'
+		// 	ul.appendChild(lis)
+		// }
+		// body.appendChild(ul)
+		// var eleStr = "<div id='hours' class='item'></div>"
+		// +"<div id='mins' class='item'></div>"
+		// +"<div id='seconds' class='item'></div>"
+		// ul.innerHTML+= eleStr
+		// var date = new Date()
+		// var nowHours = date.getHours()
+		// var nowMins = date.getMinutes()
+		// var nowSeconds = date.getSeconds()
+		// console.log(nowHours,nowMins,nowSeconds)
+		// var hours = document.getElementById('hours')
+		// var mins = document.getElementById('mins')
+		// var seconds = document.getElementById('seconds')
+		// var rotateH = 180+30*nowHours
+		// var rotateM = 180+6*nowMins
+		// var rotateS = 180+6*nowSeconds
+		// var z=0;
+		// var nowRotateS;
+		// var nowminS;
+		// var nowHourS;
+		
+		// /*var timer = JSON.parse(localStorage.getItem('time_KEY'))
+		// console.log(timer)
+		// nowRotateS = timer.nowRotateS
+		// nowminS = timer.nowminS
+		// nowHourS = timer.nowHourS*/
+		// this.setInterval(function(){
+		// 	z++
+		// 	nowRotateS = rotateS+6*z
+		// 	nowminS = rotateM + (nowRotateS-180)/60
+		// 	nowHourS = rotateH + (nowminS-180)/12
+		// 	seconds.style.transform = 'rotate('+ nowRotateS +'deg)'
+		// 	mins.style.transform = 'rotate('+(nowminS) +'deg)'
+		// 	hours.style.transform = 'rotate('+nowHourS +'deg)'
+		// 	/*var objTime = {nowRotateS,nowminS,nowHourS}
+		// 	objTime = JSON.stringify(objTime)
+		// 	localStorage.setItem('time_KEY', objTime)*/
+		// },1000)
+		
+		// //消除进入页面时指针快速旋转的bug
+		// ul.style.display ='none'
+		// setTimeout(function(){
+		// 	ul.style.display ='block'
+		// },1000)
+
+		//面试题
+			//function Hero(str){
+			// 	var body = document.getElementsByTagName('body')[0];
+			// 	var timer =0;
+			// 	var testStr = 'Hi! This is '+str
+			// 	body.innerHTML = testStr+'<br />'
+			// 	console.log(testStr)
+			// 	var obj = new Object()
+			// 	obj.sleep = function(num3){
+			// 		timer = num3
+			// 		return obj
+			// 	}
+			// 	obj.kill = function(num1){
+			// 		var bug = num1<=1?' bug':' bugs';
+			// 		var testStr2 = 'kill '+ num1 + bug;
+			// 		setTimeout(function(){
+			// 			body.innerHTML += testStr2+'<br />'
+			// 			console.log(testStr2)
+			// 		},timer)
+			// 		var obj = new Object()
+			// 		obj.recover = function(num2){
+			// 			var testStr3 = 'recover '+ num2 +' bloods'
+			// 			setTimeout(function(){
+			// 				body.innerHTML += testStr3+'<br />'
+			// 				console.log(testStr3)
+			// 			},0)
+			// 		}
+			// 		return obj
+			// 	}
+			// 	return obj
+			// }
+			// //Hero('37FEer')
+			// //Hero('37FEer').kill(1).recover(30)
+			// Hero('37FEer').sleep(3000).kill(2)
+
+
+			//模拟foreach（）方法。。。。。。
+			// var arr = ['a','b','c','d','e']
+        	// Array.prototype.fore = function (fun) {
+            // 		for (var i = 0; i < this.length; i++) {
+				// 		item = this[i];
+				// 		index = i;
+				// 		fun.call(this,item,index)
+            // 		}
+       		//  }
+			   
+			// arr.fore(function (item, index) {
+			// 	console.log(item, index)
+			// })
+
+			
+	</script>
+</html>

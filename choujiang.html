@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            background-color: #333;
+        }
+
+        #test,
+        input[type='button'] {
+            margin: 0 auto;
+        }
+
+        #test {
+            width: 300px;
+            height: 100px;
+            background-color: aquamarine;
+            line-height: 100px;
+            text-align: center;
+            font-size: 25px;
+            margin-top: 200px;
+            margin-bottom: 30px;
+        }
+
+        input[type='button'] {
+            display: block;
+            outline: none;
+            border: 0;
+            width: 100px;
+            height: 30px;
+            background-color: yellowgreen;
+        }
+        input[type='button']:hover{
+            background-color: rosybrown;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test">
+        点击下方按钮抽取幸运
+    </div>
+    <input type="button" value="开始抽取">
+    <script type="text/javascript">
+        var divTest = document.getElementById('test');
+        var btn = document.querySelector("input[type='button']");
+        //所有同学数据数组
+        var nameArr = ['郝 海', '陈 建', '袁 涛', '江 凯', '陈 辉', '陈 光', '陈 驰', '陈 科'];
+        var num;
+        var timer;
+        var flag = 0;
+        var sup;
+        var magic;
+        //作弊//
+        document.onkeydown = function (event) {
+            //17 console.log(event.keyCode)
+            magic = event.keyCode;
+        }
+            //console.log(magic)
+        btn.onclick = function () {
+            flag++
+            flag%=2
+            clearInterval(timer);
+            timer = setInterval(function () {
+                num = Math.round(Math.random() * (nameArr.length-1));
+                sup = nameArr[num];
+                //console.log(sup);
+                divTest.innerHTML = sup;
+                
+            }, 30);
+            this.value = '停止';
+            if(flag == 0){
+                //console.log('停止了。。。。')
+                this.value = '开始抽取';
+                clearInterval(timer);
+                if(magic ==17){
+                    //console.log('作弊。。。')
+                    divTest.innerHTML = nameArr[0];
+                    magic = 0;
+                }
+            }
+        }
+        
+        
+    </script>
+</body>
+
+</html>
