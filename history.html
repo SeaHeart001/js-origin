@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>历史记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Microsoft YaHei UI", tahoma, Hiragino Sans GB, sans-serif;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0px;
+            margin: 0;
+        }
+
+        .menu {
+            list-style: none;
+            padding: 8px;
+            display: flex;
+            justify-content: flex-end;
+            background-color: #969eff;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 2;
+        }
+
+        .menu li {
+            display: block;
+            text-decoration: none;
+            width: 100px;
+            border: 1px solid #fff;
+            border-radius: 3px;
+            text-align: center;
+            padding: 8px;
+            color: #fff;
+            margin-left: 8px;
+
+            cursor: pointer;
+
+            font-family: "Microsoft YaHei UI", tahoma, Hiragino Sans GB, sans-serif;
+
+        }
+
+        .menu li:hover {
+            color: #969eff;
+            background: #fff;
+        }
+
+        #page {
+            padding: 80px 20px;
+            text-indent: 2em;
+            line-height: 2.2;
+            font-family: "Microsoft YaHei UI", tahoma, Hiragino Sans GB, sans-serif;
+
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="menu" id="menu">
+        <!--
+        <li><a href="#page1" id="page1">首页</a></li>
+        <li><a href="#page2" id="page2">产品介绍</a></li>
+        <li><a href="#page3" id="page3">服务说明</a></li>
+        <li><a href="#page4" id="page4">关于我们</a></li>
+        -->
+        <li id="page1">首页</li>
+        <li id="page2">产品介绍</li>
+        <li id="page3">服务说明</li>
+        <li id="page4">关于我们</li>
+
+    </ul>
+    <div id="page">
+
+    </div>
+    <script type="text/javascript">
+
+        var json = {
+            'home': '百度（纳斯达克：BIDU），全球最大的中文搜索引擎、最大的中文网站。1999年底,身在美国硅谷的李彦宏看到了中国互联网及中文搜索引擎服务的巨大发展潜力，抱着技术改变世界的梦想，他毅然辞掉硅谷的高薪工作，携搜索引擎专利技术，于 2000年1月1日在中关村创建了百度公司。',
+            'product': '作为全球最大的中文搜索引擎公司，百度一直致力于让网民更平等的获取信息，找到所求。百度是用户获取信息的最主要入口，随着移动互联网的发展，百度网页搜索完成了由PC向移动的转型，由连接人与信息扩展到连接人与服务，用户可以在PC、Pad、手机上访问百度主页，通过文字、语音、图像多种交互方式瞬间找到所需要的信息和服务。',
+            'service': '百度拥有数万名研发工程师，这是中国乃至全球最为优秀的技术团队。这支队伍掌握着世界上最为先进的搜索引擎技术，使百度成为中国掌握世界尖端科学核心技术的中国高科技企业，也使中国成为美国、俄罗斯、和韩国之外，全球仅有的4个拥有搜索引擎核心技术的国家之一。',
+            'about': '百度大厦建设用地3.68公顷，东西约115-124米，南北约312米。建筑物东西宽约 65-72米，南北长约240米。百度大厦项目总建筑面积为91500㎡，其中地上59000㎡、地下32500㎡，建筑高度30m；为百度公司未来综合研发及办公总部，定位为“外资企业总部大楼”。'
+        }
+
+        var menuDom = document.querySelector("#menu");
+        var pageDom = document.querySelector("#page");
+        console.log('test')
+        menuDom.onclick = function (ev) {
+
+            var obj = ev.target;
+
+            if (obj.id == "page1") {
+                history.pushState(json.home, null, "home.html");
+                showMsg(pageDom, json.home);
+                return;
+            }
+            if (obj.id == "page2") {
+                history.pushState(json.product, null, "product.html");
+                showMsg(pageDom, json.product);
+                return;
+            }
+            if (obj.id == "page3") {
+                history.pushState(json.service, null, "service.html");
+                showMsg(pageDom, json.service);
+                return;
+            }
+            if (obj.id == "page4") {
+                history.pushState(json.about, null, "about.html");
+                showMsg(pageDom, json.about);
+                return;
+            }
+
+        }
+
+        window.onpopstate = function (ev) {
+            console.log(ev);
+            /*pageDom.innerHTML = ev.state;*/
+            showMsg(pageDom, ev.state);
+        }
+
+        function showMsg(dom, msg) {
+            dom.innerHTML = msg;
+        }
+
+
+    </script>
+</body>
+
+</html>
